@@ -1,7 +1,9 @@
 package com.heckvision.tbmod;
 
+import com.heckvision.tbmod.client.openCmd;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +14,7 @@ public class TbMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		CommandRegistrationCallback.EVENT.register(openCmd::register);
 		LOGGER.info("Hello Fabric world!");
 	}
 }
