@@ -12,9 +12,11 @@ public class TbMod implements ModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+
+	//hypixel api key: f0575e72-b0f6-4981-953b-1b90cdf73447
 	@Override
 	public void onInitialize() {
 		CommandRegistrationCallback.EVENT.register(openCmd::register);
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("[2B] enabling mod");
 	}
 }

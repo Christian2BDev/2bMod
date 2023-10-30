@@ -6,6 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.text.Text;
 
+import java.awt.*;
+
 public class drawHUD extends Screen {
     protected drawHUD(Text title) {
         super(title);
@@ -13,33 +15,19 @@ public class drawHUD extends Screen {
     }
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        int x = context.getScaledWindowWidth();
-        int centerx = context.getScaledWindowWidth()/2;
-        int y = context.getScaledWindowHeight();
-        int centery = context.getScaledWindowHeight()/2;
-//        //background
-//        context.fill((int) (centerx - (x*0.3)),(int) (centery - (y*0.4)) ,(int) (centerx + (x*0.3)), (int) (centery + (y*0.4)),0xff000000);
-//
-//        //content
-//        context.drawHorizontalLine((int) (centerx - (x*0.3)), (int) (centerx + (x*0.3)), (int) (centery - (y *0.35)), 0xffffffff);
-//
-//        context.fill((int) (centerx - (x*0.3)),(int) (centery - (x*0.2)) ,(int) (centerx + (x*0.3)), (int) (centery + (x*0.2)),0xff000000);
-
-//        context.fill(centerx-200,centery-100,centerx+200, centery+100, 0xff000000);
+        //nav
         context.fill(context.getScaledWindowWidth() / 2 - width / 2, context.getScaledWindowHeight() / 2 - height / 2, width, height, 0xff000000);
-        context.drawCenteredTextWithShadow(textRenderer,"2B Mod", context.getScaledWindowWidth() / 2 - width / 2 +   textRenderer.getWidth("2B Mod")/2 , context.getScaledWindowHeight() / 2 - height / 2 ,0xffffff);
+        context.drawCenteredTextWithShadow(textRenderer,"2B Mod", context.getScaledWindowWidth() / 2 - width / 2 +   textRenderer.getWidth("2B Mod")/2 , context.getScaledWindowHeight() / 2 - height / 2 + context.getScaledWindowHeight()/25  - textRenderer.fontHeight ,0xffffff);
+        context.drawCenteredTextWithShadow(textRenderer,"Made by Christian2B", context.getScaledWindowWidth() / 2 - width / 2 +   textRenderer.getWidth("Made by Christian2B")/2 , context.getScaledWindowHeight() / 2 - height / 2 + context.getScaledWindowHeight()/25,0xffffff);
 
-//        context.getMatrices().push();
-
-//        context.getMatrices().scale((float) context.getScaledWindowWidth() /960, (float) context.getScaledWindowHeight() /600, 1);
-//        int x = context.getScaledWindowWidth();
-//        int centerx = context.getScaledWindowWidth()/2;
-//        int y = context.getScaledWindowHeight();
-//        int centery = context.getScaledWindowHeight()/2;
-//        context.drawCenteredTextWithShadow(textRenderer,"2B Mod", centerx , (int) (centery - (y *0.45)),0xffffff);
-//        context.fill(centerx-200,centery-100,centerx+200, centery+100, 0xff000000);
-//        context.getMatrices().pop();
-//        super.render(context, mouseX, mouseY, delta);
-
+        //buttons
+        int start_text_width = textRenderer.getWidth("Made by Christian2B");
+        int boxwidth = (context.getScaledWindowWidth() - start_text_width - context.getScaledWindowWidth()/20) / 7;
+        for (int i = 0; i < 7; i++) {
+            context.fill( start_text_width + i*boxwidth + context.getScaledWindowWidth()/50, context.getScaledWindowHeight() / 2 - height / 2,start_text_width + (i+1)* boxwidth, context.getScaledWindowHeight() / 2 - height / 2 + context.getScaledWindowHeight()/10, Color.DARK_GRAY.getRGB());
+            // startpoint : textwidth(Made by Christian2B) + i*(width)
+            // width : screen width - textwidth(Made by Christian2B) /7
+        }
+        context.drawHorizontalLine(context.getScaledWindowWidth() / 2 - width / 2, width,  context.getScaledWindowHeight() / 2 - height / 2 + context.getScaledWindowHeight()/10, 0xffffffff );
     }
 }
