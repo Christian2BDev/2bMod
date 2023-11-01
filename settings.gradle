@@ -4,7 +4,21 @@ pluginManagement {
 			name = 'Fabric'
 			url = 'https://maven.fabricmc.net/'
 		}
+		maven {
+			name = 'Hypixel'
+			url = 'https://repo.hypixel.net/repository/Hypixel/'
+		}
+		maven {
+			name = 'Gson'
+			url = 'https://mvnrepository.com/artifact/com.google.code.gson/gson'
+		}
+		maven {
+			name = 'Apache'
+			url = 'https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient'
+		}
+
 		mavenCentral()
 		gradlePluginPortal()
 	}
+
 }
